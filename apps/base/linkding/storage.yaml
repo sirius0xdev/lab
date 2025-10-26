@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: linkding-data
+  namespace: linkding  
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi # Requests 500Mi of storage
+  storageClassName:  local-path  # Can be used to specify a particular StorageClass, or left empty for default binding
+
