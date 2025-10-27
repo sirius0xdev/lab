@@ -11,5 +11,5 @@ spec:
 ports:
   - protocol: TCP
     port: 9090
-    target: 9090
+    targetPort: 9090
     
