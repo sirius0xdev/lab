@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-linkding
+  namespace: linkding 
+  annotations:
+        # Optional: if Cilium isn't the default ingress controller
+      kubernetes.io/ingress.class: cilium
+spec:
+  ingressClassName: cilium # Or use the annotation above
+  rules:
+  - host: linkding.sirius-sec.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: linkding-service
+            port:
+             number: 9090

@@ -5,5 +5,6 @@ resources:
   - deployment.yaml
   - namespace.yaml
   - storage.yaml
+  - serrvice.yaml
 
 
