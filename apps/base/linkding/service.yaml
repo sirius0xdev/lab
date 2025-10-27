@@ -19,3 +19,7 @@ spec:
             name: linkding-service
             port:
              number: 9090
+  tls:
+    - hosts:
+      - linkding.sirius-sec.com
+      secretName: wildcard-sirius-trading-com-tls   
