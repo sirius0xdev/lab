@@ -8,8 +8,8 @@ spec:
   type: ClusterIP
   selector:
     app: linkding
-ports:
-  - protocol: TCP
-    port: 9090
-    targetPort: 9090
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090
     
