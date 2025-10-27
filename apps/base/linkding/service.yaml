@@ -6,6 +6,8 @@ metadata:
   annotations:
         # Optional: if Cilium isn't the default ingress controller
       kubernetes.io/ingress.class: cilium
+      ingress.cilium.io/host-listener-port: "443"
+
 spec:
   ingressClassName: cilium # Or use the annotation above
   rules:
