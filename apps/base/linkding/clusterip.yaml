@@ -9,7 +9,7 @@ spec:
   selector:
     app: linkding
 ports:
-    - protocol: TCP
-      port: 9090
-      target: 9090
+  - protocol: TCP
+    port: 9090
+    target: 9090
     
