@@ -2,11 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: prosody
-  namespace: prosody
-  labels:
-    app: prosody
 spec:
-  # Sets the number of Prosody replicas to 1 for this deployment
   replicas: 1
   serviceName: "prosody-headless"
   selector:
@@ -52,9 +48,9 @@ spec:
         - name: prosody-certs
           secret:
             secretName: prosody-cert
-          persistentvolumeclaim:
+          persistentVolumeClaim:
             claimName: prosody-certs-prosody-0
 
         - name: prosody-data
-          persistentvolumeclaim:
+          persistentVolumeClaim:
             claimName: prosody-data-prosody-0
