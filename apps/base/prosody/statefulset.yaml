@@ -49,8 +49,6 @@ spec:
         - name: prosody-certs
           secret:
             secretName: prosody-cert
-          persistentVolumeClaim:
-            claimName: prosody-certs-prosody-0
 
         - name: prosody-data
           persistentVolumeClaim:
