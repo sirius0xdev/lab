@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: prosody
+  namespace: prosody
 spec:
   replicas: 1
   serviceName: "prosody-headless"
