@@ -51,21 +51,3 @@ spec:
         - name: prosody-certs
           secret:
             secretName: prosody-cert
-  # Automatically provisions a PersistentVolume for the container
-  volumeClaimTemplates:
-    - metadata:
-        name: prosody-data
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
-        storageClassName: local-path
-    - metadata:
-        name: prosody-certs
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
-        storageClassName: local-path
