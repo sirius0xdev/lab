@@ -4,22 +4,7 @@ metadata:
   name: prosody-data
   namespace: prosody
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: local-path
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: prosody-certs
-  namespace: prosody
-spec:
-  accessModes:
-    - ReadWriteOnce
+  accessModes: ["ReadWriteOnce"]
   resources:
     requests:
       storage: 1Gi

@@ -7,4 +7,3 @@ resources:
   - namespace.yaml
   - prosody-config.yaml
   - prosodyCerts.yaml
-  - storage.yaml

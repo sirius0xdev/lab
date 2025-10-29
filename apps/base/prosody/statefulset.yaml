@@ -53,3 +53,12 @@ spec:
         - name: prosody-data
           persistentVolumeClaim:
             claimName: prosody-data
+volumeClaimTemplates:
+  - metadata:
+      name: prosody-data
+      namespace: prosody
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
