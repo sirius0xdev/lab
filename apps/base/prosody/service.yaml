@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prosody-service
+  namespace: prosody
+
+spec:
+  type: ClusterIP
+  selector:
+    app: prosody
+  ports:
+    - protocol: TCP
+      port: 5269
+      targetPort: 5269
+    - protocol: TCP
+      port: 5222
+      targetPort: 5222

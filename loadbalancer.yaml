@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prosody-xmpp
+spec:
+  # Use Cilium's L2 announcer load balancer class
+  loadBalancerClass: io.cilium/l2-announcer
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  selector:
+    app: prosody # Matches the labels on your Prosody StatefulSet pods
+  ports:
+    - name: xmpp-c2s
+      protocol: TCP
+      port: 5222
+      targetPort: 5222
+    - name: xmpp-s2s
+      protocol: TCP
+      port: 5269
+      targetPort: 5269
+    - name: prosody-http
+      protocol: TCP
+      port: 5280
+      targetPort: 5280
+    - name: prosody-https
+      protocol: TCP
+      port: 5281
+      targetPort: 5281

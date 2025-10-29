@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prosody
+  labels:
+    app: prosody
+spec:
+  # Sets the number of Prosody replicas to 1 for this deployment
+  replicas: 1
+  serviceName: "prosody-headless"
+  selector:
+    matchLabels:
+      app: prosody
+  template:
+    metadata:
+      labels:
+        app: prosody
+    spec:
+      # This schedules the pod exclusively on the labeled node.
+      nodeSelector:
+        network-role: lb-node
+      # Pod uses the host's network stack
+      hostNetwork: true
+      # Required when using hostNetwork to ensure cluster DNS resolution works
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: prosody
+          image: prosodyim/prosody:latest
+          ports:
+            - containerPort: 5222
+              name: xmpp-c2s
+            - containerPort: 5269
+              name: xmpp-s2s
+            - containerPort: 5280
+              name: prosody-http
+            - containerPort: 5281
+              name: prosody-https
+          volumeMounts:
+            - name: prosody-config
+              mountPath: /etc/prosody/prosody.cfg.lua
+              subPath: prosody.cfg.lua
+            - name: prosody-data
+              mountPath: /var/lib/prosody
+            - name: prosody-certs
+              mountPath: /etc/prosody/certs
+      volumes:
+        - name: prosody-config
+          configMap:
+            name: prosody-config
+        - name: prosody-certs
+          secret:
+            secretName: prosody-cert
+  # Automatically provisions a PersistentVolume for the container
+  volumeClaimTemplates:
+    - metadata:
+        name: prosody-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+    - metadata:
+        name: prosody-certs
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
