@@ -60,6 +60,7 @@ spec:
         resources:
           requests:
             storage: 1Gi
+        storageClassName: local-path
     - metadata:
         name: prosody-certs
       spec:
@@ -67,3 +68,4 @@ spec:
         resources:
           requests:
             storage: 1Gi
+        storageClassName: local-path
