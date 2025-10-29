@@ -1,24 +1,5 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
-metadata:
-  name: prosody
-  namespace: flux-system
-spec:
-  # The sync interval, in this case, every 1 minute.
-  interval: 1m0s
-  # The path to your application's manifests inside the repository.
-  path: "../apps/base/prosody"
-
-  # The name of the GitRepository resource that Flux is using.
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  # Tells Flux to delete resources that are no longer in the Git repository.
-  prune: true
-  # Optionally, specify the namespace for the application.
-
-  # Optionally, add a dependency on another Kustomization,
-  # for example, if your application needs a database or
-  # specific custom resource definitions (CRDs) to be installed first.
-  # dependsOn:
-  #   - name: infra
+namespace: prosody
+resource:
+  - ../apps/base/prosody
