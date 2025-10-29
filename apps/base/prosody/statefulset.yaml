@@ -48,6 +48,13 @@ spec:
         - name: prosody-config
           configMap:
             name: prosody-config
+
         - name: prosody-certs
           secret:
             secretName: prosody-cert
+          persistentvolumeclaim:
+            claimName: prosody-certs-prosody-0
+
+        - name: prosody-data
+          persistentvolumeclaim:
+            claimName: prosody-data-prosody-0
