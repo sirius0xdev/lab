@@ -52,4 +52,4 @@ spec:
 
         - name: prosody-data
           persistentVolumeClaim:
-            claimName: prosody-data-prosody-0
+            claimName: prosody-data
