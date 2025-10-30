@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: prosody
-          image: SaraSmiseth/prosody
+          image: sarasmiseth/prosody
           ports:
             - containerPort: 5222
               name: xmpp-c2s
