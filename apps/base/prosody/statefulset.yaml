@@ -49,7 +49,7 @@ spec:
             - name: prosody-data
               mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
-              mountPath: /usr/local/games/prosody/certs
+              mountPath: /usr/local/etc/prosody/certs
       volumes:
         - name: prosody-config
           configMap:
