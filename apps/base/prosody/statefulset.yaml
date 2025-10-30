@@ -58,6 +58,7 @@ spec:
         - name: prosody-certs
           secret:
             secretName: prosody-cert
+            defaultMode: 0444
 
         - name: prosody-data
           persistentVolumeClaim:
