@@ -11,14 +11,26 @@ spec:
   selector:
     app: prosody # Matches the labels on your Prosody StatefulSet pods
   ports:
+    - name: file-share
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
     - name: xmpp-c2s
       protocol: TCP
       port: 5222
       targetPort: 5222
+    - name: legacy-ssl-c2s
+      protocol: TCP
+      port: 5223
+      targetPort: 5223
     - name: xmpp-s2s
       protocol: TCP
       port: 5269
       targetPort: 5269
+    - name: xmpp-componant
+      protocol: TCP
+      port: 5347
+      targetPort: 5347
     - name: prosody-http
       protocol: TCP
       port: 5280
