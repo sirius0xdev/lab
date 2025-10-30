@@ -4,7 +4,7 @@ metadata:
   name: prosody-certs
   namespace: prosody # Or your application's namespace
 spec:
-  secretName: wildcard-sirius-trading-com-tls
+  secretName: prosody-certs
   issuerRef:
     name: letsencrypt-cloudflare
     kind: ClusterIssuer # or Issuer
