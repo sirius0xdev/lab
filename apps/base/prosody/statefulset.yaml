@@ -28,10 +28,16 @@ spec:
             - name: DOMAIN
               value: sirius-sec.com
           ports:
+            - containerPort: 5000
+              name: file-share
+            - containerPort: 5223
+              name: legacy-ssl
             - containerPort: 5222
               name: xmpp-c2s
             - containerPort: 5269
               name: xmpp-s2s
+            - containerPort: 5347
+              name: xmpp-componant
             - containerPort: 5280
               name: prosody-http
             - containerPort: 5281
@@ -41,9 +47,9 @@ spec:
               mountPath: /etc/prosody/prosody.cfg.lua
               subPath: prosody.cfg.lua
             - name: prosody-data
-              mountPath: /var/lib/prosody
+              mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
-              mountPath: /etc/prosody/certs
+              mountPath: /usr/local/games/prosody/certs
       volumes:
         - name: prosody-config
           configMap:
