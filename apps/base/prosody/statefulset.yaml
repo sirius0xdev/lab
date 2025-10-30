@@ -24,6 +24,9 @@ spec:
       containers:
         - name: prosody
           image: sarasmiseth/prosody
+          env:
+            - name: DOMAIN
+              value: sirius-sec.com
           ports:
             - containerPort: 5222
               name: xmpp-c2s
