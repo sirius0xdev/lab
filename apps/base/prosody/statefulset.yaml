@@ -23,7 +23,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: prosody
-          image: prosodyim/prosody:13.0
+          image: prosodyim/prosody-docker
           ports:
             - containerPort: 5222
               name: xmpp-c2s
