@@ -27,6 +27,7 @@ spec:
           env:
             - name: DOMAIN
               value: sirius-sec.com
+            - name: 
           ports:
             - containerPort: 5000
               name: file-share
@@ -39,7 +40,7 @@ spec:
             - containerPort: 5347
               name: xmpp-componant
             - containerPort: 5280
-              name: prosody-http
+              name: prosody-http 
             - containerPort: 5281
               name: prosody-https
           volumeMounts:
