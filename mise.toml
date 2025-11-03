@@ -1,3 +1,2 @@
 [tools]
-cilium-cli = "latest"
 kubectl = "latest"
