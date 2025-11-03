@@ -21,4 +21,7 @@ spec:
     - protocol: TCP 
       port: 5280
       targetPort: 5280
+    - protocol: TCP 
+      port: 5281
+      targetPort: 5281
 
