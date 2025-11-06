@@ -45,8 +45,8 @@ spec:
               name: prosody-https
           volumeMounts:
             - name: prosody-config
-              mountPath: /etc/prosody/prosody.cfg.lua
-              subPath: prosody.cfg.lua
+              mountPath: /usr/local/etc/prosody/conf.d/01-modules.cfg.lua 
+              subPath: 01-modules.cfg.lua 
             - name: prosody-data
               mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
