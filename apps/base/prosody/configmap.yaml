@@ -19,7 +19,6 @@ data:
           "vcard4";
           "vcard_legacy";
 
-          "account_activity";
           "csi_simple";
           "invites";
           "invites_adhoc";
@@ -39,6 +38,47 @@ data:
           "s2s_bidi";
           "watchregistrations";
       }
+  02-storage.cfg.lua: |
+    default_storage = "sql"
+
+    sql = {
+      driver = os.getenv("DB_DRIVER") or "SQLite3";
+      database = os.getenv("DB_DATABASE") or "prosody.sqlite";
+      host = os.getenv("DB_HOST");
+      port = os.getenv("DB_PORT");
+      username = os.getenv("DB_USERNAME");
+      password = os.getenv("DB_PASSWORD");
+    }
+
+    -- make 0.10-distributed mod_mam use sql store
+    archive_store = "archive2" -- Use the same data store as prosody-modules mod_mam
+
+    storage = {
+      -- this makes mod_mam use the sql storage backend
+      archive2 = "sql";
+    }
+
+    -- https://modules.prosody.im/mod_mam.html
+    archive_expires_after = "1y"
+
+    http_max_content_size = os.getenv("HTTP_MAX_CONTENT_SIZE") or 1024 * 1024 * 10 -- Default is 10MB
+  
+  03-e2e.cfg.lua: |
+    local stringy = require "stringy" 
+
+    e2e_policy_chat = os.getenv("E2E_POLICY_CHAT") or "required"
+    e2e_policy_muc = os.getenv("E2E_POLICY_MUC") or "required"
+
+    local whitelist = os.getenv("E2E_POLICY_WHITELIST") or ""
+    e2e_policy_whitelist = stringy.split(whitelist, ", ")
+
+    e2e_policy_message_optional_chat = "For security reasons, OMEMO, OTR or PGP encryption is STRONGLY recommended for conversations on this server."
+    e2e_policy_message_required_chat = "For security reasons, OMEMO, OTR or PGP encryption is required for conversations on this server."
+    e2e_policy_message_optional_muc = "For security reasons, OMEMO, OTR or PGP encryption is STRONGLY recommended for MUC on this server."
+    e2e_policy_message_required_muc = "For security reasons, OMEMO, OTR or PGP encryption is required for MUC on this server."
+  
+
+
 
   05-vhost.cfg.lua: | # Added the pipe character
     local domain = os.getenv("DOMAIN")
