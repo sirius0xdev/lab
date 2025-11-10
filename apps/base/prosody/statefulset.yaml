@@ -48,7 +48,9 @@ spec:
             - name: prosody-data
               mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
-              mountPath: /usr/local/etc/prosody/certs/upload.sirius-sec.com
+              mountPath: /usr/local/etc/prosody/certs/sirius-sec.com
+            - name: upload-certs 
+              mountPath: /usr/local/etc/prosody/certs/upload.sirius-sec.com 
       volumes:
         - name: prosody-config
           configMap:
@@ -64,6 +66,11 @@ spec:
         - name: prosody-data
           persistentVolumeClaim:
             claimName: prosody-data
+
+        - name: upload-certs 
+          secret:
+            secretName: prosody-cert
+            defaultMode: 0444
   
   volumeClaimTemplates:
     - metadata:
