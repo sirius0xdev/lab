@@ -20,7 +20,6 @@ data:
           "vcard_legacy";
 
           "account_activity";
-          "cloud_notify";
           "csi_simple";
           "invites";
           "invites_adhoc";
