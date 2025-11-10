@@ -27,7 +27,6 @@ spec:
           env:
             - name: DOMAIN
               value: sirius-sec.com
-            - name: 
           ports:
             - containerPort: 5000
               name: file-share
