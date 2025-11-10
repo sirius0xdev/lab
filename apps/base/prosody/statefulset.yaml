@@ -48,7 +48,7 @@ spec:
             - name: prosody-data
               mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
-              mountPath: /usr/local/etc/prosody/certs/sirius-sec.com
+              mountPath: /usr/local/etc/prosody/certs/upload.sirius-sec.com
       volumes:
         - name: prosody-config
           configMap:
