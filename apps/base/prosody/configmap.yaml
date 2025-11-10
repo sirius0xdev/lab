@@ -87,12 +87,19 @@ data:
     local domain_proxy = os.getenv("DOMAIN_PROXY") or "proxy." .. domain
     local domain_pubsub = os.getenv("DOMAIN_PUBSUB") or "pubsub." .. domain
 
-    c2s_direct_tls_ssl = {
+    c2s_ssl = {
       certificate = "certs/" .. domain .. "/tls.crt";
       key = "certs/" .. domain .. "/tls.key";
     }
+    
     c2s_direct_tls_ports = { 5223 }
-
+    -- Enforce encryption for c2s connections
+    c2s_require_encryption = true
+       c2s_direct_tls_ssl = {
+        certificate = "certs/" .. domain .. "/tls.crt";
+        key = "certs/" .. domain .. "/tls.key";
+    │  }
+    
     https_ssl = {
         certificate = "certs/" .. domain_http_upload .. "/tls.crt";
         key = "certs/" .. domain_http_upload .. "/tls.key";
