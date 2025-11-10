@@ -60,8 +60,9 @@ spec:
             defaultMode: 0444
 
         - name: vhost-config
-          configMap: vhost 
-          defaultMode: 0444
+          configMap: 
+            name: vhost 
+            defaultMode: 0444
 
         - name: prosody-certs
           secret:
@@ -71,6 +72,7 @@ spec:
         - name: prosody-data
           persistentVolumeClaim:
             claimName: prosody-data
+  
   volumeClaimTemplates:
     - metadata:
         name: prosody-data
