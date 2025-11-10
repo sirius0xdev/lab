@@ -92,18 +92,17 @@ data:
       key = "certs/" .. domain .. "/tls.key";
     }
     
-    c2s_direct_tls_ports = { 5223 }
-    -- Enforce encryption for c2s connections
     c2s_require_encryption = true
        c2s_direct_tls_ssl = {
         certificate = "certs/" .. domain .. "/tls.crt";
         key = "certs/" .. domain .. "/tls.key";
-    │  }
+    │ }
+      c2s_direct_tls_ports = {5223} 
     
-    https_ssl = {
+      https_ssl = {
         certificate = "certs/" .. domain_http_upload .. "/tls.crt";
         key = "certs/" .. domain_http_upload .. "/tls.key";
-    }
+      }
 
     VirtualHost (domain)
     disco_items = {
