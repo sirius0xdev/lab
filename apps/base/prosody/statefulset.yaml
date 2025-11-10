@@ -44,25 +44,17 @@ spec:
               name: prosody-https
           volumeMounts:
             - name: prosody-config
-              mountPath: /usr/local/etc/prosody/conf.d/01-modules.cfg.lua  
-              subPath: 01-modules.cfg.lua 
+              mountPath: /usr/local/etc/prosody/conf.d  
             - name: prosody-data
               mountPath: usr/local/var/lib/prosody
             - name: prosody-certs
               mountPath: /usr/local/etc/prosody/certs/sirius-sec.com
-            - name: vhost-config
-              mountPath: /usr/local/etc/prosody/conf.d/05-modules.cfg.lua 
-              subPath: 05-modules.cfg.lua 
       volumes:
         - name: prosody-config
           configMap:
             name: prosody-config
             defaultMode: 0444
 
-        - name: vhost-config
-          configMap: 
-            name: vhost 
-            defaultMode: 0444
 
         - name: prosody-certs
           secret:

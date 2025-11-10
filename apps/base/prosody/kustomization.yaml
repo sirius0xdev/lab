@@ -5,6 +5,5 @@ resources:
   - statefulset.yaml
   - loadbalancer.yaml
   - namespace.yaml
-  - prosody-config.yaml
   - prosodyCerts.yaml
-  - vhost-config.yaml 
+  - configmap.yaml
