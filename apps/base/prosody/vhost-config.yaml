@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  05-vhost.cfg.lua: "local domain = os.getenv(\"DOMAIN\")\nlocal domain_http_upload
+    = os.getenv(\"DOMAIN_HTTP_UPLOAD\") or \"upload.\" .. domain\nlocal domain_muc
+    = os.getenv(\"DOMAIN_MUC\") or \"conference.\" .. domain\nlocal domain_proxy =
+    os.getenv(\"DOMAIN_PROXY\") or \"proxy.\" .. domain\nlocal domain_pubsub = os.getenv(\"DOMAIN_PUBSUB\")
+    or \"pubsub.\" .. domain\n\n-- XEP-0368: SRV records for XMPP over TLS\n-- https://compliance.conversations.im/test/xep0368/\nc2s_direct_tls_ssl
+    = {\n\tcertificate = \"certs/\" .. domain .. \"/tls.crt\";\n\tkey = \"certs/\"
+    .. domain .. \"/tls.key\";\n}\nc2s_direct_tls_ports = { 5223 }\n\n-- https://prosody.im/doc/certificates#service_certificates\n--
+    https://prosody.im/doc/ports#ssl_configuration\nhttps_ssl = {\n\tcertificate =
+    \"certs/\" .. domain_http_upload .. \"/tls.crt\";\n\tkey = \"certs/\" .. domain_http_upload
+    .. \"/tls.key\";\n}\n\nVirtualHost (domain)\ndisco_items = {\n    { domain_http_upload
+    },\n}\n\n-- Set up a http file upload because proxy65 is not working in muc\nComponent
+    (domain_http_upload) \"http_file_share\"\n\thttp_file_share_expires_after = 60
+    * 60 * 24 * 7 -- a week in seconds\n\tlocal size_limit = os.getenv(\"HTTP_FILE_SHARE_SIZE_LIMIT\")
+    or 10 * 1024 * 1024 -- Default is 10MB\n\thttp_file_share_size_limit = size_limit\n\thttp_file_share_daily_quota
+    = os.getenv(\"HTTP_FILE_SHARE_DAILY_QUOTA\") or 10 * size_limit -- Default is
+    10x the size limit\n\nComponent (domain_muc) \"muc\"\n\tname = \"Prosody Chatrooms\"\n\trestrict_room_creation
+    = false\n\tmax_history_messages = 20\n\tmodules_enabled = {\n\t\t\"muc_mam\",\n\t\t\"vcard_muc\"\n\t}\n\n--
+    Set up a SOCKS5 bytestream proxy for server-proxied file transfers\nComponent
+    (domain_proxy) \"proxy65\"\n\tproxy65_address = domain_proxy\n\tproxy65_acl =
+    { domain }\n\n-- Implements a XEP-0060 pubsub service.\nComponent (domain_pubsub)
+    \"pubsub\"\n"
+kind: ConfigMap
+metadata:
+  name: vhost
+  namespace: prosody 
