@@ -4,7 +4,7 @@ metadata:
   name: prosody-config
   namespace: prosody
 data:
-  01-modules.cfg.lua: |
+  01-modules.cfg.lua: 
     modules_enabled = {
       "roster";
       "saslauth";
@@ -47,7 +47,7 @@ data:
       }
 
   # Paste content of 05-vhost.cfg.lua here (from the GitHub link you shared)
-  05-vhost.cfg.lua: |
+  05-vhost.cfg.lua: 
     -- This file configures the main domain for Prosody
 
     local domain = os.getenv("DOMAIN")
