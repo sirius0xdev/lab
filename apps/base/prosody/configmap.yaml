@@ -4,9 +4,7 @@ metadata:
   name: prosody-config
   namespace: prosody
 data:
-  # Paste content of 01-modules.cfg.lua here
   01-modules.cfg.lua: |
-    -- your 01-modules content...
     modules_enabled = {
       "roster";
       "saslauth";
@@ -39,10 +37,6 @@ data:
 	  	"admin_adhoc"; -- Allows administration via an XMPP client that supports ad-hoc commands
 	  	"admin_shell"; -- Allow secure administration via 'prosodyctl shell'
 
-	    -- HTTP modules
-		  --"bosh"; -- Enable BOSH clients, aka "Jabber over HTTP"
-		  --"http_openmetrics"; -- for exposing metrics to stats collectors
-		  --"websocket"; -- XMPP over WebSockets
 
 	    -- Other specific functionality
 		  "groups"; -- Shared roster support
