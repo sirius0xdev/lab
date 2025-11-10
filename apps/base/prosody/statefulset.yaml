@@ -52,7 +52,7 @@ spec:
             - name: prosody-certs
               mountPath: /usr/local/etc/prosody/certs
             - name: vhost-config
-              mountPath: /urs/local/etc/prosody/conf.d/05-modules.cfg.lua 
+              mountPath: /usr/local/etc/prosody/conf.d/05-modules.cfg.lua 
       volumes:
         - name: prosody-config
           configMap:
