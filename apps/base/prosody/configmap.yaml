@@ -6,9 +6,8 @@ metadata:
 data:
   01-modules.cfg.lua: | # Added the pipe character
     modules_enabled = {
-      "roster";
+     "roster";
       "saslauth";
-      "blocklist"
       "blocklist";
           "bookmarks";
           "carbons";
