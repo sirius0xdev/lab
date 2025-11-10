@@ -3,7 +3,6 @@ kind: ConfigMap
 metadata:
   name: prosody-config
   namespace: prosody
-		  --"welcome"; -- Welcome users who register accounts
 data:
   # Paste content of 01-modules.cfg.lua here
   01-modules.cfg.lua: |
