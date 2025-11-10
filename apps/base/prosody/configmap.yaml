@@ -97,7 +97,7 @@ data:
         certificate = "certs/" .. domain .. "/tls.crt";
         key = "certs/" .. domain .. "/tls.key";
     │ }
-      c2s_direct_tls_ports = {5223} 
+      c2s_direct_tls_ports = { 5223 } 
     
       https_ssl = {
         certificate = "certs/" .. domain_http_upload .. "/tls.crt";
