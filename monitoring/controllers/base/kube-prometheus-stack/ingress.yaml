@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-graffana
+  namespace: monitoring
+  annotations:
+        # Optional: if Cilium isn't the default ingress controller
+      kubernetes.io/ingress.class: cilium
+      ingress.cilium.io/host-listener-port: "443"
+
+spec:
+  ingressClassName: cilium # Or use the annotation above
+  rules:
+  - host: grafana.sirius-sec.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kube-prometheus-stack-grafana   
+            port:
+             number: 80 
+  tls:
+    - hosts:
+      - grafana.sirius-sec.com
+      secretName: grafana-cert   
