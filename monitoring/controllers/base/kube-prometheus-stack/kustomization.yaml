@@ -5,4 +5,4 @@ resources:
   - repository.yaml
   - release.yaml
   - ingress.yaml
-  - grafana-certs.yaml
+  - grafana-cert.yaml
