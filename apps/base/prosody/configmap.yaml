@@ -6,23 +6,23 @@ metadata:
 data:
   01-modules.cfg.lua: | # Added the pipe character
     modules_enabled = {
-     "roster";
-      "saslauth";
-      "blocklist";
-          "bookmarks";
-          "carbons";
-          "dialback";
-          "limits";
-          "pep";
-          "private";
+        "roster";
+        "saslauth";
+        "blocklist";
+        "bookmarks";
+        "carbons";
+        "dialback";
+        "limits";
+        "pep";
+        "private";
           "smacks";
           "vcard4";
           "vcard_legacy";
+          "allow_registration";
 
           "csi_simple";
           "invites";
           "invites_adhoc";
-          "invites_register";
           "ping";
           "register";
           "time";
