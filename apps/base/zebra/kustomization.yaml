@@ -5,5 +5,4 @@ resources:
   - repository.yaml
   - release.yaml
   - secrets.yaml 
-configurations:
-  - kustomizeconfig.yaml
+
