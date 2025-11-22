@@ -2,4 +2,4 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 namespace: zcash 
 resource:
-  - ../apps/base/zcash 
+  - ../apps/base/zebra 
