@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: zcash-stack 
-      version: latest 
+      version: 1.* 
       
 
       sourceRef:
