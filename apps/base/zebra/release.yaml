@@ -35,7 +35,7 @@ spec:
       valuesKey: rpc-password
       targetPath: rpc.credentials.rpcUser 
 
-values:
+  values:
     # --- Corrected Paths based on zcash-stack chart structure ---
     # Apply nodeSelector to all components via the global key
     global:
