@@ -42,3 +42,5 @@ spec:
     dnsseeder.env.nodeHostname: "zec.sirius-sec.com"
     dnsseeder.env.email: "sirius-sec@protonmail.com"
     zebra.volumes.data.storageClass: local-path
+    lightwalletd.volumes.data.storageClass: local-path 
+
