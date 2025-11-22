@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata: 
+  name: zcash-stack
+  namespace: zcash 
+spec:
+    interval: 24h
+    url: https://Electric-Coin-Company.github.io/zcash-stack/
