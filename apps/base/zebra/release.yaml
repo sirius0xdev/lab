@@ -41,4 +41,4 @@ spec:
     dnsseeder.env.seedHostname: "sirius-sec.com"
     dnsseeder.env.nodeHostname: "zec.sirius-sec.com"
     dnsseeder.env.email: "sirius-sec@protonmail.com"
-
+    zebra.volumes.data.storageClass: local-path
