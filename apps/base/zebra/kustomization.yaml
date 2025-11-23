@@ -4,7 +4,6 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - secrets.yaml 
 secretGenerator:
   - name: zebra-secret-values
     files:
