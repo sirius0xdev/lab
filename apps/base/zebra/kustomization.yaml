@@ -17,4 +17,4 @@ patches:
       kind: StatefulSet
       name: zcash-stack-zebra
       namespace: zcash
-    path: patches/zebra-statefulset-patch.yaml
+    path: patches/zebrad-statefulset-patch.yaml
