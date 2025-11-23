@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zcash-stack-zebra # Must match the actual name of the deployed StatefulSet
+  namespace: zcash
+spec:
+  volumeClaimTemplates:
+  - metadata:
+      name: zebra-data # Must match the template name
+    spec:
+      # This forces RWO permanently, overriding the chart's hardcoded RWM
+      accessModes:
+        - ReadWriteOnce

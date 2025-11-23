@@ -11,3 +11,10 @@ secretGenerator:
       - values.yaml=my-values.enc.yaml
 configurations:
   - kustomizeconfig.yaml
+
+patches:
+  - target:
+      kind: StatefulSet
+      name: zcash-stack-zebra
+      namespace: zcash
+    path: patches/zebra-statefulset-patch.yaml
