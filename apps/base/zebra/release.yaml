@@ -27,10 +27,11 @@ spec:
       name: zebra-secret-values  
       
   values:
-    Global:
-      nodeSelector:
-        hostname: highpower
-    
+    zcashd:
+      volumes:
+        data:
+          storageClass: local-path
+          accessMode: ReadWriteOnce 
     zebra:
       volumes:
         data:
@@ -40,7 +41,6 @@ spec:
     lightwalletd:
       volumes:
         data:
-          size: 350Gi
           storageClass: local-path
           accessMode: ReadWriteOnce 
     
