@@ -9,3 +9,5 @@ secretGenerator:
     namespace: zcash
     files:
       - values.yaml=my-values.enc.yaml
+configurations:
+  - kustomizeconfig.yaml
