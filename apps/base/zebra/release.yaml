@@ -25,28 +25,4 @@ spec:
   valuesFrom:
     - kind: Secret 
       name: zebra-secret-values  
-      
-  values:
-    zcashd:
-      volumes:
-        data:
-          storageClass: local-path
-          accessMode: ReadWriteOnce 
-    zebra:
-      volumes:
-        data:
-          storageClass: local-path
-          accessMode: ReadWriteOnce 
-    
-    lightwalletd:
-      volumes:
-        data:
-          storageClass: local-path
-          accessMode: ReadWriteOnce 
-    
-    dnsseeder:
-      env:
-        seedHostname: "sirius-sec.com"
-        nodeHostname: "zcash.sirius-sec.com"
-        email: "sirius-sec@protonmail.com"
         
