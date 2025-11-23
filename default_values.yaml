@@ -15,6 +15,7 @@ zcashd:
     data:
       size: 400Gi
       storageClass: local-path
+      accessMode: ReadWriteOnce 
   service:
     type: ClusterIP
   requests: {}
@@ -38,7 +39,7 @@ zebra:
     data:
       size: 400Gi
       storageClass: local-path
-      accessMode: ReadWriteOnce 
+      #accessMode: ReadWriteOnce 
   service:
     type: ClusterIP
   # requests: {}
