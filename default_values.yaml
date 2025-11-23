@@ -14,7 +14,7 @@ zcashd:
   volumes:
     data:
       size: 400Gi
-      storageClass: default
+      storageClass: local-path
   service:
     type: ClusterIP
   requests: {}
@@ -37,20 +37,21 @@ zebra:
   volumes:
     data:
       size: 400Gi
-      storageClass: local-path 
+      storageClass: local-path
+      accessMode: ReadWriteOnce 
   service:
     type: ClusterIP
-  requests: {}
-  # requests:
-  #   cpu: 2
-  #   memory: 4Gi
-  # limits:
-  #   memory: 16Gi
+  # requests: {}
+ # requests:
+   #  cpu: 2
+    # memory: 4Gi
+   # limits:
+    # memory: 16Gi
 
 rpc:
   credentials:
-    rpcUser: 5s3rn4m3
-    rpcPassword: s3cr3tp4ssw0rd
+    rpcUser: sirius
+    rpcPassword: petuk1k1711666! 
 
 lightwalletd:
   enabled: true
@@ -65,15 +66,15 @@ lightwalletd:
   volumes:
     data:
       size: 400Gi
-      storageClass: default
+      storageClass: local-path 
   service:
     type: ClusterIP
   requests: {}
-  # requests:
-  #   cpu: 0.5
-  #   memory: 512Mi
+   #requests:
+    # cpu: 0.5
+     #memory: 512Mi
   #limits:
-  #  memory: 3Gi
+   # memory: 3Gi
 
 # lightwalletd-front
 caddy: 
@@ -98,9 +99,9 @@ dnsseeder:
   #limits:
   #  memory: 3Gi
   env:
-    seedHostname: "example.com"
-    nodeHostname: "zcash.example.com"
-    email: "admin@example.com"
+    seedHostname: "sirius-sec.com"
+    nodeHostname: "zcash.sirius-sec.com"
+    email: "sirius_sec@protonmail.com"
     threads: 384
     address: "0.0.0.0"
     network: "mainnet"
