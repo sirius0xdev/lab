@@ -35,11 +35,14 @@ spec:
       volumes:
         data:
           storageClass: local-path
+          accessMode: ReadWriteOnce 
+    
     lightwalletd:
       volumes:
         data:
           size: 350Gi
           storageClass: local-path
+          accessMode: ReadWriteOnce 
     
     dnsseeder:
       env:
