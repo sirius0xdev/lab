@@ -1,0 +1,19 @@
+rpc:
+    credentials:
+        rpcUser: ENC[AES256_GCM,data:5ijzOfBp,iv:fnmoFwpaCerTEAxaBzdCvu1PsfU6BrwGe0/0GMKBQDg=,tag:8CI3YTvohsl2ecv+yhUxZw==,type:str]
+        rpcPassword: ENC[AES256_GCM,data:Is76qWIG8gNK5J77Vozd,iv:XcPg+P1KhE9RUgns9C++8Fo1a4f/6sJKv/50h+WZDO4=,tag:XFhWMnzoJGacYaTbLd+sYg==,type:str]
+sops:
+    age:
+        - recipient: age1fu3yw8700dznl0xgsrcgghjase8uh94unaj4pjjkh70g7kzv8u3sqcgz4d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBnSzd4Mk5paS9RbnYwWEV1
+            dkI0cVAwaUVOL2lrWGJkZnYxL214c3h3WkhBCjJVN3lManJ0ZDljUGR1Mk5FTDRk
+            bk5jbDlReWM2K3ZYcTlKN3h1NUdFSjAKLS0tIEZydjZQZDVMNTh1Rmw0QWYybmgr
+            N3FsbUVsUlhGOHdGQy9MZFhkRjg4Tm8K+i1bJMkbPFAaXct4q+zcyDQTwikkj5Yt
+            FZbgm+jITohQGceAwDejZDIVK3twkpM0/HDOu2NtieArJfy5BIUjwQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-11-23T02:57:24Z"
+    mac: ENC[AES256_GCM,data:M9Hkfjzxgj9uiNJAvpfr8FjU2fQwBnpQUjhu5mrdyyxLw74bXEtuCVj2n995y4yeUpQ9iGlaljfwjUeBWPBggbdyftpeiwiJHQfKzmbsNyhquR8/+RUhmiwetPm92kQv3toNtO1T/9qIPEFIn2TGIuac3wpiK9P3iQRH0hIJsT4=,iv:0Z7rWI/NJ8Whw9qNhQDBDAkulTCuud+7e3BwOdn9CVI=,tag:Lf8HkM9rv5KzaB41ZxOGnA==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.11.0

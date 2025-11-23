@@ -24,7 +24,7 @@ spec:
     mode: enabled
   valuesFrom:
     - kind: Secret 
-      name: zcash-stack-secrets 
+      name: zebra-secret-values  
 
   values:
     Global:
