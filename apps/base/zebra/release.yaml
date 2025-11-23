@@ -23,7 +23,7 @@ spec:
   driftDetection:
     mode: enabled
   valuesFrom:
-    - kind: secret 
+    - kind: Secrets 
       name: zcash-stack-secrets 
 
   values:
