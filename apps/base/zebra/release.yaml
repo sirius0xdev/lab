@@ -8,51 +8,42 @@ spec:
   chart:
     spec:
       chart: zcash-stack 
-      version: "^1.0.0"  
-      
+      version: "1.0.3"  
+
 
       sourceRef:
         kind: HelmRepository
         name: zcash-stack 
         namespace: zcash 
       interval: 12h
-  
   install:
     crds: Create
   upgrade:
     crds: CreateReplace
   driftDetection:
     mode: enabled
-  
   valuesFrom:
-    - kind: Secret
-      name: zcash-stack-secrets
-      valuesKey: rpc-password
-      targetPath: rpc.credentials.rpcPassword
-    
-    - kind: Secret
-      name: zcash-stack-secrets
-      valuesKey: rpc-password
-      targetPath: rpc.credentials.rpcUser 
+    - kind: secret 
+      name: zcash-stack-secrets 
 
   values:
-    # --- Corrected Paths based on zcash-stack chart structure ---
-    # Apply nodeSelector to all components via the global key
-    global:
+    Global:
       nodeSelector:
         hostname: highpower
-
-    # Correct paths for persistence configuration
-    lightwalletd:
-      persistence:
-        storageClass: local-path
+    
     zebra:
-      persistence:
-        storageClass: local-path
-    # --- End of corrections ---
-
-    dnsseeder.env.seedHostname: "sirius-sec.com"
-    dnsseeder.env.nodeHostname: "zec.sirius-sec.com"
-    dnsseeder.env.email: "sirius-sec@protonmail.com"
-    dnsseeder.image.repository: electriccoinco/dnsseeder 
-    dnsseeder.image.tag: sha256:9f9ff41101dcfd26c222e51d48cf34a6dc9be918a1702174c9d54e54210c532d
+      volumes:
+        data:
+          storageClass: local-path
+    lightwalletd:
+      volumes:
+        data:
+          size: 350Gi
+          storageClass: local-path
+    
+    dnsseeder:
+      env:
+        seedHostname: "sirius-sec.com"
+        nodeHostname: "zcash.sirius-sec.com"
+        email: "sirius-sec@protonmail.com"
+        
