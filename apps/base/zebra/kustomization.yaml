@@ -13,7 +13,7 @@ configurations:
   - kustomizeconfig.yaml
 
 patches:
-  - path: zebrad-statefulset-patch
+  - path: zebrad-statefulset-patch.yaml
     target:
       kind: StatefulSet
       name: zcash-stack-zebra
