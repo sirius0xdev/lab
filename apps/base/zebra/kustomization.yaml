@@ -1,4 +1,4 @@
-apiVersion: kustomize.config.k8s.io/v1
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - namespace.yaml
@@ -12,9 +12,14 @@ secretGenerator:
 configurations:
   - kustomizeconfig.yaml
 
-patches:
-  - path: zebrad-statefulset-patch.yaml
-    target:
+patches: 
+  - target:
       kind: StatefulSet
       name: zcash-stack-zebra
-    type: json  
+       
+    patch: |-
+      - op: replace
+        path: /spec/volumeClaimTemplates/0/spec/accessModes
+        value:
+          - ReadWriteOnce
+
