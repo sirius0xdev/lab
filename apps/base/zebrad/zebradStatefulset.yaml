@@ -26,14 +26,14 @@ spec:
           imagePullPolicy: IfNotPresent
           name: zebrad 
           ports:
-        - containerPort: 8232
-          name: zebrad-rpc 
-          protocol: TCP
-        - containerPort: 8233
-          name: zebrad-p2p 
-          protocol: TCP
+          - containerPort: 8232
+            name: zebrad-rpc 
+            protocol: TCP
+          - containerPort: 8233
+            name: zebrad-p2p 
+            protocol: TCP
           resources:
-          requests:
+            requests:
             cpu: "0"
             memory: "0"
           terminationMessagePath: /dev/termination-log
