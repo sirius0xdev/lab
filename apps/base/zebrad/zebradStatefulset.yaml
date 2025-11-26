@@ -57,7 +57,7 @@ spec:
       
       initContainers:
       - args:
-        - mkdir /var/cache/zebrad-cache chown -R 2001 /var/cache/zebrad-cache
+        - mkdir /var/cache/zebrad-cache && chown -R 2001 /var/cache/zebrad-cache
         command:
         - /bin/bash
         - -c
