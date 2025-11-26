@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels:
-        app: zcash-stack-zebra
+        app: zebrad
     spec:
       containers:
         - image: zfnd/zebra:latest
