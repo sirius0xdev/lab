@@ -48,8 +48,6 @@ spec:
             name: zebra-data
           - mountPath: /etc/zebrad
             name: zebrad-config
-          - mountPath: /data
-            name: zebra-data 
       volumes:
         - name: zebrad-config
           configMap:
@@ -59,7 +57,7 @@ spec:
       
       initContainers:
       - args:
-        - chown -R 2001 /data
+        - chown -R 2001 /var/cache/zebrad-cache
         command:
         - /bin/bash
         - -c
