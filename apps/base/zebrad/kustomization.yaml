@@ -5,3 +5,4 @@ resources:
   - zebradStatefulset.yaml
   - service.yaml
   - namespace.yaml
+  - configmap.yaml
