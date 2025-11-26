@@ -4,7 +4,7 @@ metadata:
   name: zebrad-service
   namespace: zcash 
 spec:
-  type: Clusterip 
+  type: ClusterIp 
   selector:
     app: zebrad  
   ports:
