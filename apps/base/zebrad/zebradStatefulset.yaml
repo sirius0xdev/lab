@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+  name: zebrad 
+  namespace: zcash
+spec:
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Retain
+    whenScaled: Retain
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: zcash-stack-zebra
+  serviceName: ""
+  template:
+    metadata:
+      labels:
+        app: zcash-stack-zebra
+    spec:
+      containers:
+      - env:
+        - name: NETWORK
+          value: Mainnet
+        - name: ZEBRA_CONF_PATH
+          value: /etc/zebrad/zebrad.toml
+        - name: ZEBRA_CACHED_STATE_DIR
+          value: /var/cache/zebrad-cache
+        - name: RUST_LOG
+          value: info
+        - name: LOG_COLOR
+          value: "false"
+        - name: ZEBRA_LISTEN_ADDR
+          value: 0.0.0.0
+        - name: ZEBRA_CHECKPOINT_SYNC
+          value: "true"
+        - name: METRICS_ENDPOINT_ADDR
+          value: 0.0.0.0
+        - name: METRICS_ENDPOINT_PORT
+          value: "9999"
+        - name: TRACING_ENDPOINT_ADDR
+          value: 0.0.0.0
+        - name: TRACING_ENDPOINT_PORT
+          value: "3000"
+        - name: RPC_LISTEN_ADDR
+          value: 0.0.0.0
+        - name: RPC_PORT
+          value: "8232"
+        image: zfnd/zebra:latest
+        imagePullPolicy: IfNotPresent
+        name: zebra
+        ports:
+        - containerPort: 8232
+          name: zebra-rpc
+          protocol: TCP
+        - containerPort: 8233
+          name: zebra-p2p
+          protocol: TCP
+        resources:
+          requests:
+            cpu: "0"
+            memory: "0"
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/cache/zebrad-cache
+          name: zebra-data
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - args:
+        - chown -R 2001 /data
+        command:
+        - /bin/bash
+        - -c
+        image: debian
+        imagePullPolicy: Always
+        name: set-permissions
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /data
+          name: zebra-data
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: zebra-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 400Gi
+      storageClassName: local-path
+      volumeMode: Filesystem

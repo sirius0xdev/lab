@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  zcash.conf: |
+    rpcbind=zcash-stack-zebra
+    rpcuser=sirius
+    rpcpassword=petuk1k1711666!
+kind: Secret 
+metadata:
+  name: zcash-stack-lightwalletd
+  namespace: zcash
