@@ -34,8 +34,6 @@ spec:
           value: "false"
         - name: ZEBRA_LISTEN_ADDR
           value: 0.0.0.0
-        - name: ZEBRA_CHECKPOINT_SYNC
-          value: "true"
         - name: METRICS_ENDPOINT_ADDR
           value: 0.0.0.0
         - name: METRICS_ENDPOINT_PORT
