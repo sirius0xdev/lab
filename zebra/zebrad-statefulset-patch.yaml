@@ -1,4 +1,0 @@
-- op: replace
-  path: /spec/volumeClaimTemplates/0/spec/accessModes
-  value:
-    - ReadWriteOnce
