@@ -21,6 +21,7 @@ spec:
     spec:
       containers:
       - args:
+        - --no-tls-very-insecure
         - --grpc-bind-addr
         - "0.0.0.0:9067"
         - --zcash-conf-path
