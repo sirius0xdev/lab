@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lightwallet-service
+  labels:
+    app: zcash-stack-lightwallet
+spec:
+  selector:
+    app: zcash-stack-lightwallet 
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9067
+      targetPort: 9067
+
+

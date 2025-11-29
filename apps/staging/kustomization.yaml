@@ -4,3 +4,4 @@ resources:
   - ../base/linkding
   - ../base/prosody
   - ../base/zebrad
+  - ../base/lightwallet

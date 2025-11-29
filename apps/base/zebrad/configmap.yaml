@@ -19,7 +19,7 @@ data:
    cookie_dir = "/var/cache/zebrad-cache"
 
 
-   enable_cookie_auth = true
+   enable_cookie_auth = false 
 
    [state]
    cache_dir = "/var/cache/zebrad-cache"
