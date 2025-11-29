@@ -21,9 +21,9 @@ spec:
     spec:
       containers:
       - args:
-        - --tls-cert-path
+        - --tls-cert
         - ""
-        - --tls-key-path
+        - --tls-key
         - "" 
         - --grpc-bind-addr
         - "0.0.0.0:9067"
