@@ -72,6 +72,7 @@ spec:
       
       - secret:
          secretName: lightwallet-certs
+         defaultMode: 420
         name: lightwallet-certs 
   
       - name: lightwalletd-data 
