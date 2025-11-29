@@ -17,7 +17,7 @@ data:
    listen_addr = "0.0.0.0:8232" # Mainnet
 
    cookie_dir = "/var/cache/zebrad-cache"
-
+   
 
    enable_cookie_auth = false 
 
@@ -26,7 +26,7 @@ data:
 
    [tracing]
    use_color = true
-
+ 
 
    [metrics]
 
