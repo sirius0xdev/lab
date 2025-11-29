@@ -43,17 +43,20 @@ spec:
         - containerPort: 9067
           name: grpc
           protocol: TCP
-        
+         
           readinessProbe:
-          grpc:
+          httpGet:
+            path: /health
             port: 9067
-          initialDelaySeconds: 10 # Give lightwalletd time to start caching
+            scheme: HTTP # Use HTTP because Envoy handles the external TLS
+          initialDelaySeconds: 10
           periodSeconds: 10
-        
         livenessProbe:
-          grpc:
+          httpGet:
+            path: /health
             port: 9067
-          initialDelaySeconds: 60 # Allow for longer sync at startup
+            scheme: HTTP
+          initialDelaySeconds: 60
           periodSeconds: 30
         
         resources:
