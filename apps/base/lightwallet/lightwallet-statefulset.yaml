@@ -32,13 +32,29 @@ spec:
         - "/dev/stdout"
         command:
         - lightwalletd
+        
         image: electriccoinco/lightwalletd:latest
         imagePullPolicy: IfNotPresent
         name: lightwalletd
+        
         ports:
+        
         - containerPort: 9067
           name: grpc
           protocol: TCP
+        
+          readinessProbe:
+          grpc:
+            port: 9067
+          initialDelaySeconds: 10 # Give lightwalletd time to start caching
+          periodSeconds: 10
+        
+        livenessProbe:
+          grpc:
+            port: 9067
+          initialDelaySeconds: 60 # Allow for longer sync at startup
+          periodSeconds: 30
+        
         resources:
           requests:
             cpu: "0"
