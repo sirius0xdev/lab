@@ -6,5 +6,5 @@ metadata:
 data:
   zcash.conf: |
     rpcbind=zebrad-service.default.svc.cluster.local
-  
-
+    rpcpassword=$RPC_PASSWORD 
+    
