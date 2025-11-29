@@ -22,17 +22,17 @@ spec:
       containers:
       - args:
         - --grpc-bind-addr
-        - 0.0.0.0:9067
-        - --tls-cert-string
-        - --/srv/lightwalletd/certs/tls.cert
-        - --tls-key-string
-        - --/srv/lightwalletd/certs/tls.key
+        - "0.0.0.0:9067"
+        - --tls-cert
+        - "/srv/lightwalletd/certs/tls.cert"
+        - --tls-key
+        - "/srv/lightwalletd/certs/tls.key"
         - --zcash-conf-path
-        - /srv/lightwalletd/conf/zcash.conf
+        - "/srv/lightwalletd/conf/zcash.conf"
         - --data-dir
-        - /srv/lightwalletd/db_volume
+        - "/srv/lightwalletd/db_volume"
         - --log-file
-        - /dev/stdout
+        - "/dev/stdout"
         command:
         - lightwalletd
         image: electriccoinco/lightwalletd:latest
