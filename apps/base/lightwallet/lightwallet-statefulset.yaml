@@ -24,7 +24,7 @@ spec:
         - --grpc-bind-addr
         - "0.0.0.0:9067"
         - --tls-cert
-        - "/srv/lightwalletd/certs/tls.cert"
+        - "/srv/lightwalletd/certs/tls.crt"
         - --tls-key
         - "/srv/lightwalletd/certs/tls.key"
         - --zcash-conf-path
