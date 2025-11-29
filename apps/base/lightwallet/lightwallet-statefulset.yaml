@@ -65,7 +65,7 @@ spec:
       
       volumes:
   
-      - secret: 
+      - configMap: 
           defaultMode: 420
           name: config  
         name: config 

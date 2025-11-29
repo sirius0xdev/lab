@@ -3,6 +3,6 @@ kind: Kustomization
 
 resources:
   - lightwallet-statefulset.yaml
-  - lightwallet-secret.yaml
+  - configmap.yaml
   - certs.yaml
   - service.yaml
