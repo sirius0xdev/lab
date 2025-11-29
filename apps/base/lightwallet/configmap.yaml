@@ -5,6 +5,6 @@ metadata:
   namespace: zcash
 data:
   zcash.conf: |
-    rpcbind=zebrad-rpc
+    rpcbind=zebrad-service
     rpcpassword=$RPC_PASSWORD 
     
