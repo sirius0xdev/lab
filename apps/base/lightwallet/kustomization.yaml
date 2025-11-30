@@ -6,4 +6,4 @@ resources:
   - configmap.yaml
   - certs.yaml
   - service.yaml
-  - loadbalancer.yaml  
+  - ingress.yaml  

@@ -1,15 +1,15 @@
+ipam:
+  mode: kubernetes 
 
 kubeProxyReplacement: true
+
 l2announcements:
   # -- Enable L2 announcements
-  enabled: true 
-  # -- If a lease is not renewed for X duration, the current leader is considered dead, a new leader is picked
-  # leaseDuration: 15s
-  # -- The interval at which the leader will renew the lease
-  # leaseRenewDeadline: 5s
-  # -- The timeout between retries if renewal fails
-  # leaseRetryPeriod: 2s
-# -- Configure L2 pod announcements
+  enabled: true
+k8sClientRateLimit:
+  qps: 15
+  burst: 20
+
 l2podAnnouncements:
   # -- Enable L2 pod announcements
   enabled: true
