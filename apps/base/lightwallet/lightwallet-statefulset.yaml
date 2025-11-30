@@ -21,6 +21,7 @@ spec:
     spec:
       containers:
       - args:
+        - --grpc-web
         - --no-tls-very-insecure
         - --grpc-bind-addr
         - "0.0.0.0:9067"
@@ -43,21 +44,17 @@ spec:
         - containerPort: 9067
           name: grpc
           protocol: TCP
-         
+        
           readinessProbe:
-          httpGet:
-            path: /health
+          grpc:
             port: 9067
-            scheme: HTTP # Use HTTP because Envoy handles the external TLS
           initialDelaySeconds: 10
           periodSeconds: 10
         livenessProbe:
-          httpGet:
-            path: /health
+          grpc:
             port: 9067
-            scheme: HTTP
           initialDelaySeconds: 60
-          periodSeconds: 30
+          periodSeconds: 30  
         
         resources:
           requests:
