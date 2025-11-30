@@ -1,0 +1,45 @@
+
+kubeProxyReplacement: true
+
+ingressController:
+  # -- Enable cilium ingress controller
+  # This will automatically set enable-envoy-config as well.
+  enabled: true 
+  # -- Set cilium ingress controller to be the default ingress controller
+  # This will let cilium ingress controller route entries without ingress class set
+  default: true
+  # -- Default ingress load balancer mode
+  # Supported values: shared, dedicated
+  # For granular control, use the following annotations on the ingress resource:
+  # "ingress.cilium.io/loadbalancer-mode: dedicated" (or "shared").
+  loadbalancerMode: shared     
+  hostNetwork:
+    # -- Configure whether the Envoy listeners should be exposed on the host network.
+    enabled: true 
+    # -- Configure a specific port on the host network that gets used for the shared listener.
+    sharedListenerPort: 443 
+    # Specify the nodes where the Ingress listeners should be exposed
+    nodes:
+      # -- Specify the labels of the nodes where the Ingress listeners should be exposed
+      #
+      # matchLabels:
+      #   kubernetes.io/os: linux
+      #   kubernetes.io/hostname: kind-worker
+      matchLabels: {component: ingress}
+
+envoy:
+  enabled: true 
+  securityContext:
+    capabilities:
+      keepCapNetBindService: true
+      envoy:
+      - NET_BIND_SERVICE
+      - NET_ADMIN
+      - SYS_ADMIN
+      - BPF
+       
+
+    
+      
+
+      

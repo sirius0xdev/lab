@@ -75,7 +75,7 @@ spec:
         - mountPath: /srv/lightwalletd/certs 
           name: lightwallet-certs 
       
-      dnsPolicy: ClusterFirst
+      dnsPolicy: ClusterFirstWithHostNet 
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}

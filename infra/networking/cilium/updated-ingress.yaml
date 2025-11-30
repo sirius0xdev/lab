@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-ingress-mealie
+  namespace: mealie 
+  annotations:
+    ingress.cilium.io/host.listener.port: "443"
+    kubernetes.io/ingress.class: cilium 
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: mealie.sirius-sec.com 
+    http:
+      paths:
+      - path: /
+        pathType: Prefix 
+        backend:
+          service:
+            name: my-mealie-service 
+            port:
+              number: 9000
+
+
+
+
+  tls:
+   - hosts:
+     - mealie.sirius-sec.com
+     secretName: wildcard-sirius-trading-com-tls # cert-manager will place the certificate here

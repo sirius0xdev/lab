@@ -10,7 +10,7 @@ spec:
   type: LoadBalancer
   externalTrafficPolicy: Local
   selector:
-    app: lightwallet-service  # Matches the labels on your Prosody StatefulSet pods
+    app: zcash-stack-lightwalletd 
   ports:
     - name: rpc 
       protocol: TCP
