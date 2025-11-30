@@ -21,7 +21,6 @@ spec:
     spec:
       containers:
       - args:
-        - --grpc-web
         - --no-tls-very-insecure
         - --grpc-bind-addr
         - "0.0.0.0:9067"
@@ -44,17 +43,16 @@ spec:
         - containerPort: 9067
           name: grpc
           protocol: TCP
-        
-          readinessProbe:
-          grpc:
+        readinessProbe:
+          tcpSocket:
             port: 9067
           initialDelaySeconds: 10
           periodSeconds: 10
         livenessProbe:
-          grpc:
+          tcpSocket:
             port: 9067
           initialDelaySeconds: 60
-          periodSeconds: 30  
+          periodSeconds: 30
         
         resources:
           requests:
