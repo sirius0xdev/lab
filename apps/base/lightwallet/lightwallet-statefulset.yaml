@@ -21,7 +21,10 @@ spec:
     spec:
       containers:
       - args:
-        - --no-tls-very-insecure
+        - --tls-cert
+        - "/srv/lightwalletd/certs/tls.crt"
+        - --tls-key
+        - "/srv/lightwalletd/certs/tls.key"
         - --grpc-bind-addr
         - "0.0.0.0:9067"
         - --zcash-conf-path
