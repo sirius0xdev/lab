@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: lightwallet-service
   namespace: zcash
+  annotations:
+    io.cilium/protocol-ports: '9067:H2C'
   labels:
     app: zcash-stack-lightwallet
 spec:

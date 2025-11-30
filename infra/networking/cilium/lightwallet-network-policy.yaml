@@ -1,0 +1,24 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "allow-lightwalletd-grpc"
+  namespace: zcash
+spec:
+  endpointSelector:
+    matchLabels:
+      app: zcash-stack-lightwalletd # Selects your lightwalletd pods
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        # Match labels of your Ingress Controller/Envoy Pods if possible
+        # Otherwise, match on the namespace where the ingress runs (e.g., kube-system)
+        k8s:io.kubernetes.pod.namespace: kube-system 
+  # This section explicitly allows the gRPC methods by name
+    toPorts:
+    - ports:
+      - port: "9067"
+        protocol: TCP
+      rules:
+        grpc:
+        - method: "/cash.z.wallet.sdk.rpc.CompactTxStreamer/GetLightdInfo"
+        - method: "/cash.z.wallet.sdk.rpc.CompactTxStreamer/GetBlock"
