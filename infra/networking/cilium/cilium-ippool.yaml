@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: prosody-ippool
+  name: sirius-ippool
 spec:
   blocks:
     - cidr: "5.161.82.129/32"

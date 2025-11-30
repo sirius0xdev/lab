@@ -913,7 +913,7 @@ ingressController:
   # Supported values: shared, dedicated
   # For granular control, use the following annotations on the ingress resource:
   # "ingress.cilium.io/loadbalancer-mode: dedicated" (or "shared").
-  loadbalancerMode: dedicated
+  loadbalancerMode: shared
   # -- Enforce https for host having matching TLS host in Ingress.
   # Incoming traffic to http listener will return 308 http error code with respective location in header.
   enforceHttps: true
@@ -1313,7 +1313,7 @@ hubble:
     # grafana can import dashboards based on the label and value
     # ref: https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
     dashboards:
-      enabled: false
+      enabled: true 
       label: grafana_dashboard
       # @schema
       # type: [null, string]

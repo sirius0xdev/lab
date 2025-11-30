@@ -69,7 +69,26 @@ envoy:
       - SYS_ADMIN
       - BPF
        
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
 
+
+
+    # -- Grafana dashboards for hubble
+    # grafana can import dashboards based on the label and value
+    # ref: https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
+dashboards:
+  enabled: true 
+  label: grafana_dashboard
+  # @schema
+  # type: [null, string]
+  # @schema
+  namespace: ~
+  labelValue: "1"
+  annotations: {}
     
       
 
