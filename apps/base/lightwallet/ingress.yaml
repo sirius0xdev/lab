@@ -20,7 +20,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: lightwallet-service    
+            name: zcash-stack-lightwalletd  
             port:
              number: 9067
   tls:
