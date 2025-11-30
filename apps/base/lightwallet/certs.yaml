@@ -8,7 +8,7 @@ spec:
   issuerRef:
     name: letsencrypt-cloudflare
     kind: ClusterIssuer # or Issuer
+  encodeUsable: true
   commonName: "*.sirius-sec.com"
   dnsNames:
-    - "*.sirius-sec.com"
-    - "sirius-sec.com"
+    - "zcash.sirius-sec.com"
