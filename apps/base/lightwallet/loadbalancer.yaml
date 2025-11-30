@@ -4,6 +4,9 @@ kind: Service
 metadata:
   name: lightwalletd-rpc
   namespace: zcash 
+  annotations:
+    lbipam.cilium.io/sharing-key: sirius-services
+    io.cilium/lb-ipam-ips: 5.161.82.129
 spec:
   # Use Cilium's L2 announcer load balancer class
   loadBalancerClass: io.cilium/l2-announcer

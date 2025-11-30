@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: prosody-xmpp
   namespace: prosody
+  annotations: 
+    lbipam.cilium.io/sharing-key: sirius-services
 spec:
   # Use Cilium's L2 announcer load balancer class
   loadBalancerClass: io.cilium/l2-announcer

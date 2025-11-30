@@ -1,15 +1,10 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumL2AnnouncementPolicy
 metadata:
-  name: prosody-lb-policy
+  name: lb-policy
 spec:
   # Announce the LoadBalancer IP
   loadBalancerIPs: true
-  # Use a nodeSelector to restrict announcements to your designated node
-  nodeSelector:
-    matchLabels:
-      network-role: lb-node
-  # Specify the interface(s) to use for announcements (adjust regex as needed)
   interfaces:
     - ^eth[0-9]+
   # Optionally, you can use a serviceSelector to apply this policy only to specific services.
