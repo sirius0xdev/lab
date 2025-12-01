@@ -34,7 +34,7 @@ spec:
         - --log-file
         - "/dev/stdout"
         - --donation-address
-        - " u1par8vw6kgw9e49wv0vy5cara56460nek4gc6ngruht8pt9l3j8j8cn9az35cuqr8rv2rsdt04esw8fxkj0xs9zx2ntluspapgga6qpsk9rr9narl9urx23ln6fwmgt5mr6jz7wlhj9hrwxuvafvhhtxsnt9r0jfd9lujf20kcsp9dk67 "
+        - u1par8vw6kgw9e49wv0vy5cara56460nek4gc6ngruht8pt9l3j8j8cn9az35cuqr8rv2rsdt04esw8fxkj0xs9zx2ntluspapgga6qpsk9rr9narl9urx23ln6fwmgt5mr6jz7wlhj9hrwxuvafvhhtxsnt9r0jfd9lujf20kcsp9dk67
         command:
         - lightwalletd
         
