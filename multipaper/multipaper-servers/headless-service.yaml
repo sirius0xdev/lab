@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: master-headless
+  namespace: minecraft 
+spec:
+  clusterIP: None
+  selector:
+    app: multipaper-master
+  ports:
+    - protocol: TCP
+      port: 35353 # Port for inter-server communication
+      targetPort: 35353

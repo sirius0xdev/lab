@@ -1,0 +1,23 @@
+# --- Stage 1: Downloader and Verifier (uses utilities to ensure file integrity) ---
+FROM ubuntu:22.04 AS downloader
+RUN apt-get update && apt-get install -y curl unzip wget
+
+WORKDIR /downloads
+# Use curl with a fail-fast flag (-f) and a retry flag (-r) to download the JAR
+RUN wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/standalone
+
+# Check if the file is a valid zip archive (which a JAR is)
+RUN unzip -l standalone 
+
+# --- Stage 2: Final Runtime Image (slim and clean) ---
+FROM amazoncorretto:21
+WORKDIR /app
+
+# Copy the *verified* JAR file from the downloader stage
+COPY --from=downloader /downloads/standalone geyser.jar
+
+# Ensure permissions are correct
+RUN chmod +r geyser.jar
+
+# Define the command to run the GeyserMC JAR when the container starts
+CMD ["java", "-jar", "geyser.jar"]

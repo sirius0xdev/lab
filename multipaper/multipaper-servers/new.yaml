@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multipaper-server-deployment
+  namespace: minecraft
+# ... (spec.selector and template.metadata) ...
+spec:
+  template:
+    spec:
+      securityContext: # Keep this to ensure user permissions are correct
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      
+      # 1. Use an initContainer to copy files from the read-only ConfigMap to a writable volume
+      initContainers:
+      - name: copy-config
+        image: busybox:1.36 # A minimal image with 'cp' command
+        command: ["sh", "-c", "cp -R /configmap-source/* /writable-config/"]
+        volumeMounts:
+        - name: config-source # Mounts the ConfigMap data as read-only source
+          mountPath: /configmap-source
+        - name: config-writable # Mounts the EmptyDir/PVC as writable destination
+          mountPath: /writable-config
+      
+      # 2. Main container runs after initContainer completes
+      containers:
+      - name: server
+        image: noevidenz/multipaper:1.20
+        # ... (env vars) ...
+        volumeMounts:
+          # Mount the writable volume to the location the app expects (/app/config)
+          - name: config-writable
+            mountPath: /app/config 
+
+      volumes:
+        # Define the read-only ConfigMap source volume
+        - name: config-source
+          configMap:
+            name: paper-global # The name of your ConfigMap
+        
+        # Define a writable volume (use EmptyDir for temporary config or PVC for permanent config)
+        - name: config-writable
+          emptyDir: {} # Temporary storage that dies with the pod
+          # OR use a PVC like this if you want persistence:
+          # persistentVolumeClaim:
+          #   claimName: multipaper-config-pvc

@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: velocity-config-pvc
+  namespace: minecraft # Ensure this matches your namespace
+spec:
+  accessModes:
+    - ReadWriteOnce # Requires a volume that can be mounted by one pod read/write
+  resources:
+    requests:
+      storage: 1Gi # 1 GB is usually enough for a proxy config
+  # storageClassName: standard # Uncomment and set if you need a specific storage class
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velocity-proxy-deployment
+  namespace: minecraft
+  labels:
+    app: velocity-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: velocity-proxy
+  template:
+    metadata:
+      labels:
+        app: velocity-proxy
+    spec:
+      containers:
+      # ADD HYPHEN HERE TO INDICATE THE START OF THE LIST ITEM
+      - name: velocity-proxy-container 
+        image: itzg/mc-proxy:latest # A versatile image that supports Velocity
+        ports:
+        - containerPort: 25577 # Default proxy port for MC Java connections
+          name: mc-java-tcp
+          protocol: TCP
+          
+        env:
+          - name: TYPE
+            value: "VELOCITY" # Tells the Docker image to run Velocity
+          - name: SERVER_PORT
+            value: "25577"
+          - name: MOTD
+            value: "My Awesome MultiPaper Network"
+        
+        volumeMounts:
+          - mountPath: /server 
+            name: velocity-config-pvc
+        
+          - name: velocity-config
+            mountPath: /tmp/config 
+            
+      
+      volumes:
+        # These hyphens were already correct
+      - name: velocity-config-pvc  
+        persistentVolumeClaim:
+          claimName: velocity-config-pvc
+          
+      - name: velocity-config
+        configMap:
+          name: velocity-config
+          defaultMode: 0444
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: velocity-proxy-service
+  namespace: minecraft
+spec:
+  selector:
+    app: velocity-proxy
+  
+     
+  type: ClusterIP 
+  ports:
+    - protocol: TCP
+      port: 25565 # The standard port external Java players use to connect
+      targetPort: 25577 # The container port
+      name: mc-java-tcp

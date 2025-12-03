@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: multipaper-master
+  namespace: minecraft
+spec:
+  replicas: 1 
+  serviceName: "master-headless"
+  selector:
+    matchLabels:
+      app: multipaper-master
+  template: 
+    metadata: 
+      labels:
+        app: multipaper-master 
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: multipaper-master
+          image: noevidenz/multipaper-master:1.20 
+          resources:
+            limits:
+              memory: 2048Mi
+              cpu: 500m
+            requests:
+              memory: 1024Mi 
+              cpu: 250m 
+          env:
+            - name: EULA
+              value: "true"
+            - name: JAVA_TOOL_OPTIONS
+              value: -DmultipaperMasterAddress=master:35353 -Dspigot.settings.bungeecord=true
+          ports:
+            - containerPort: 25565
+              name: proxy-port
+            - containerPort: 35353
+              name: master-server 
+          volumeMounts: 
+            - name: worldfiles
+              mountPath: /app
+        
+
+  volumeClaimTemplates: 
+    - metadata:
+       name: worldfiles 
+       namespace: minecraft 
+      spec: 
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 20Gi
+                    
+
+
+
+
+
+
+
+
+
+
+

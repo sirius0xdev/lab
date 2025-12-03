@@ -1,0 +1,52 @@
+apiVersion: v1
+data:
+  paper-global.yml: "# This is the global configuration file for Paper.\n# As you
+    can see, there's a lot to configure. Some options may impact gameplay, so use\n#
+    with caution, and make sure you know what each option does before configuring.\n#
+    \n# If you need help with the configuration or have any questions related to Paper,\n#
+    join us in our Discord or check the docs page.\n# \n# The world configuration
+    options have been moved inside\n# their respective world folder. The files are
+    named paper-world.yml\n# \n# Docs: https://docs.papermc.io/\n# Discord: https://discord.gg/papermc\n#
+    Website: https://papermc.io/\n\n_version: 28\nblock-updates:\n  disable-chorus-plant-updates:
+    false\n  disable-mushroom-block-updates: false\n  disable-noteblock-updates: false\n
+    \ disable-tripwire-updates: false\nchunk-loading-advanced:\n  auto-config-send-distance:
+    true\n  player-max-concurrent-chunk-generates: 0\n  player-max-concurrent-chunk-loads:
+    0\nchunk-loading-basic:\n  player-max-chunk-generate-rate: -1.0\n  player-max-chunk-load-rate:
+    100.0\n  player-max-chunk-send-rate: 75.0\nchunk-system:\n  gen-parallelism: default\n
+    \ io-threads: -1\n  worker-threads: -1\ncollisions:\n  enable-player-collisions:
+    true\n  send-full-pos-for-hard-colliding-entities: true\ncommands:\n  fix-target-selector-tag-completion:
+    true\n  suggest-player-names-when-null-tab-completions: true\n  time-command-affects-all-worlds:
+    false\nconsole:\n  enable-brigadier-completions: true\n  enable-brigadier-highlighting:
+    true\n  has-all-permissions: false\nitem-validation:\n  book:\n    author: 8192\n
+    \   page: 16384\n    title: 8192\n  book-size:\n    page-max: 2560\n    total-multiplier:
+    0.98\n  display-name: 8192\n  lore-line: 8192\n  resolve-selectors-in-books: false\nlogging:\n
+    \ deobfuscate-stacktraces: true\n  log-player-ip-addresses: true\nmessages:\n
+    \ kick:\n    authentication-servers-down: <lang:multiplayer.disconnect.authservers_down>\n
+    \   connection-throttle: Connection throttled! Please wait before reconnecting.\n
+    \   flying-player: <lang:multiplayer.disconnect.flying>\n    flying-vehicle: <lang:multiplayer.disconnect.flying>\n
+    \ no-permission: <red>I'm sorry, but you do not have permission to perform this
+    command.\n    Please contact the server administrators if you believe that this
+    is in error.\n  use-display-name-in-quit-message: false\nmisc:\n  chat-threads:\n
+    \   chat-executor-core-size: -1\n    chat-executor-max-size: -1\n  compression-level:
+    default\n  fix-entity-position-desync: true\n  load-permissions-yml-before-plugins:
+    true\n  max-joins-per-tick: 5\n  region-file-cache-size: 256\n  strict-advancement-dimension-check:
+    false\n  use-alternative-luck-formula: false\n  use-dimension-type-for-custom-spawners:
+    false\npacket-limiter:\n  all-packets:\n    action: KICK\n    interval: 7.0\n
+    \   max-packet-rate: 500.0\n  kick-message: <red><lang:disconnect.exceeded_packet_rate>\n
+    \ overrides:\n    ServerboundPlaceRecipePacket:\n      action: DROP\n      interval:
+    4.0\n      max-packet-rate: 5.0\nplayer-auto-save:\n  max-per-tick: -1\n  rate:
+    -1\nproxies:\n  bungee-cord:\n    online-mode: true\n  proxy-protocol: false\n
+    \ velocity:\n    enabled: true\n    online-mode: false\n    secret: 'w5A76DwhYVb2cTTLLkH4Pqmanr7xNjmb'\nscoreboards:\n
+    \ save-empty-scoreboard-teams: false\n  track-plugin-scoreboards: false\nspam-limiter:\n
+    \ incoming-packet-threshold: 300\n  recipe-spam-increment: 1\n  recipe-spam-limit:
+    20\n  tab-spam-increment: 1\n  tab-spam-limit: 500\ntimings:\n  enabled: true\n
+    \ hidden-config-entries:\n  - database\n  - proxies.velocity.secret\n  history-interval:
+    300\n  history-length: 3600\n  server-name: Unknown Server\n  server-name-privacy:
+    false\n  url: https://timings.aikar.co/\n  verbose: true\nunsupported-settings:\n
+    \ allow-grindstone-overstacking: false\n  allow-headless-pistons: false\n  allow-permanent-block-break-exploits:
+    false\n  allow-piston-duplication: false\n  compression-format: ZLIB\n  perform-username-validation:
+    true\nwatchdog:\n  early-warning-delay: 10000\n  early-warning-every: 5000\n"
+kind: ConfigMap
+metadata:
+  name: paper-global
+  namespace: minecraft 

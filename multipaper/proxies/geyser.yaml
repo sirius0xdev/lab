@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: geysermc-deployment
+  namespace: minecraft 
+  labels:
+    app: geysermc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geysermc
+  template:
+    metadata:
+      labels:
+        app: geysermc
+    spec:
+      containers:
+      - name: geysermc-container
+        image: siriussec/geysermc-custom:latest  
+        ports:
+        - containerPort: 19132
+          name: bedrock-udp
+          protocol: UDP
+        env:
+        # GEyserMC Docker images often use environment variables to override config.yml values
+        # Replace the value below with your internal Kubernetes service name for your Java MC server
+        - name: REMOTE_ADDRESS
+          value: "velocity-proxy-service"  
+        # Replace the value below with the port of your Java MC server (default 25565)
+        - name: REMOTE_PORT
+          value: "25565"
+        - name: BEDROCK_PORT
+          value: "19132"
+        # Set address to 0.0.0.0 to listen on all interfaces
+        - name: BEDROCK_ADDRESS
+          value: "0.0.0.0"
+        - name: AUTH-TYPE 
+          value: "floodgate" 
+       
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: floodgate-key-volume
+          mountPath: /app/config/key.pem # Ensure this is the correct path Geyser expects
+          subPath: key.pem # Mounts only the single file f
+        # Allocate resources appropriately (example values)
+
+      volumes:
+       - name: floodgate-key-volume
+         secret:
+           secretName: geyser-floodgate-key # Name of the secret you created in Step 2
+           defaultMode: 0400 # 
+
