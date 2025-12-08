@@ -22,12 +22,27 @@ spec:
       initContainers:
       - name: copy-config
         image: busybox:1.36 # A minimal image with 'cp' command
-        command: ["sh", "-c", "cp -R /configmap-source/* /writable-config/"]
+        command: ["sh", "-c", "cp -RL /configmap-source/* /writeable-config/"]
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+ 
         volumeMounts:
         - name: config-source # Mounts the ConfigMap data as read-only source
           mountPath: /configmap-source
-        - name: config-writable # Mounts the EmptyDir/PVC as writable destination
-          mountPath: /writable-config 
+        
+        - name: config-writeable # Mounts the EmptyDir/PVC as writable destination
+          mountPath: /writeable-config 
+      
+      - name: download-plugins
+        image: curlimages/curl:latest # A minimal image with curl pre-installed
+        command: ['sh', '-c', '
+          curl -L "https://github.com/ViaVersion/ViaVersion/releases/download/5.5.1/ViaVersion-5.5.1.jar" -o /plugins/Viaversion.jar 
+          ']
+        volumeMounts:
+          - name: plugins-storage
+            mountPath: /plugins
       
       containers:
       - name: server
@@ -36,21 +51,27 @@ spec:
         - name: EULA
           value: "true"
         - name: JAVA_TOOL_OPTIONS
-          value: "-Xmx1G -DmultipaperMasterAddress=master-headless:35353 -Dproperties.view-distance=16 -Dspigot.settings.bungeecord=true"
+          value: "-Xmx1G -DmultipaperMasterAddress=master-headless:35353 -Dproperties.view-distance=16 -Dspigot.settings.velocity=true"
+        
         volumeMounts:
-          - name: config-writable 
-            mountPath: /app/config
-            
+          - name: config-writeable 
+            mountPath: /app
+           
+          - name: plugins-storage 
+            mountPath: /app/plugins 
 
       volumes:     # Define the read-only ConfigMap source volume
         - name: config-source
           configMap:
            name: paper-global # The name of your ConfigMap
         
+        - name: plugins-storage
+          emptyDir: {} 
+             
         # Define a writable volume (use EmptyDir for temporary config or PVC for permanent config)
-        - name: config-writable
-          emptyDir: {} # Temporary storage that dies with the pod
-          # OR use a PVC like this if you want persistence:
-          # persistentVolumeClaim:
-          #   claimName: multipaper-config-pvc
+        
+        - name: config-writeable
+          emptyDir: {} 
+            
+             
 

@@ -1,0 +1,98 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: geyser-config 
+  namespace: minecraft 
+data:
+  config.yml: |
+
+    bedrock:
+      address: 0.0.0.0
+      port: 19132
+      clone-remote-port: false
+      motd1: "Geyser"
+      motd2: "Another Geyser server."
+      server-name: "Geyser"
+      compression-level: 3
+      enable-proxy-protocol: false
+    remote: 
+        address: multipaper-loadbalancer  
+        port: 25565
+        auth-type: online  
+        allow-password-authentication: true
+    use-proxy-protocol: false
+    forward-hostname: false
+
+    floodgate-key-file: key.pem
+
+    saved-user-logins:
+      - MidFriend3407
+      - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+    pending-authentication-timeout: 120
+
+    command-suggestions: true
+
+    passthrough-motd: false
+    passthrough-protocol-name: false
+    passthrough-player-counts: false
+    legacy-ping-passthrough: false
+    ping-passthrough-interval: 3
+
+    forward-player-ping: false
+
+    max-players: 1000
+
+    debug-mode: false
+
+    allow-third-party-capes: true
+
+    allow-third-party-ears: false
+
+    show-cooldown: title
+
+    show-coordinates: true
+
+    disable-bedrock-scaffolding: false
+
+    always-quick-change-armor: false
+
+    emote-offhand-workaround: "disabled"
+
+
+    cache-images: 0
+
+    allow-custom-skulls: true
+
+    max-visible-custom-skulls: 128
+
+    custom-skull-render-distance: 32
+
+    add-non-bedrock-items: true
+
+    above-bedrock-nether-building: false
+
+    force-resource-packs: true
+
+    xbox-achievements-enabled: false
+
+    log-player-ip-addresses: true
+
+    notify-on-new-bedrock-update: true
+
+    metrics:
+      enabled: true
+      uuid: 96e45ad9-512d-4907-8a92-1ec5ebed6d5f
+
+
+    scoreboard-packet-threshold: 20
+
+    enable-proxy-connections: false
+
+    mtu: 1400
+
+    use-direct-connection: true
+
+    config-version: 4
+     
