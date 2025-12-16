@@ -19,4 +19,6 @@ spec:
                 name: renovate-container-env
             - configMapRef:
                 name: renovate-configmap
+      
+
       restartPolicy: Never
