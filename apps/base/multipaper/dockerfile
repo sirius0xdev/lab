@@ -1,5 +1,5 @@
 # --- Stage 1: Downloader and Verifier (uses utilities to ensure file integrity) ---
-FROM ubuntu:22.04 AS downloader
+FROM ubuntu:24.04 AS downloader
 RUN apt-get update && apt-get install -y curl unzip wget
 
 WORKDIR /downloads
