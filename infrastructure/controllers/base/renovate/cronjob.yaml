@@ -7,19 +7,21 @@ spec:
   schedule: "@hourly"
   concurrency: Forbid
   jobTemplate:
-    spec: 
+    spec:
+      template:
+        spec:  
       
-      restartPolicy: Never
-      containers:
-        - name: renovate
-          image: renovate/renovate:latest
-          args:
-            - sirius0xdev/lab 
+          restartPolicy: Never
+          containers:
+            - name: renovate
+              image: renovate/renovate:latest
+              args:
+                - sirius0xdev/lab 
 
-          envFrom:
-            - secretRef:
-                name: renovate-container-env
-            - configMapRef:
-                name: renovate-configmap
+              envFrom:
+                - secretRef:
+                    name: renovate-container-env
+                - configMapRef:
+                    name: renovate-configmap
       
 
