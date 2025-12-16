@@ -10,7 +10,7 @@ RUN wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds
 RUN unzip -l standalone 
 
 # --- Stage 2: Final Runtime Image (slim and clean) ---
-FROM amazoncorretto:21
+FROM amazoncorretto:25
 WORKDIR /app
 
 # Copy the *verified* JAR file from the downloader stage
