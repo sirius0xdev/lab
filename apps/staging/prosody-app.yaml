@@ -1,5 +1,0 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-namespace: prosody
-resource:
-  - ../apps/base/prosody
