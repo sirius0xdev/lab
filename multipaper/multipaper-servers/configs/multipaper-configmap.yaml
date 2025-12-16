@@ -1,5 +1,39 @@
 apiVersion: v1
 data:
+  multipaper.yml: | 
+
+    master-connection:
+      advertise-to-built-in-proxy: true
+      master-address: master-headless:35353
+      my-name: server67374
+    optimizations:
+      dont-save-just-for-lighting-updates: false
+      max-footstep-packets-sent-per-player: -1
+      reduce-player-position-updates-in-unloaded-chunks: false
+      ticks-per-inactive-entity-tracking: 1
+      use-event-based-io: true
+    peer-connection:
+      compression-threshold: 0
+      consolidation-delay: 0
+    sync-settings:
+      files:
+        files-to-not-sync:
+        - plugins/bStats
+        files-to-only-upload-on-server-stop:
+        - plugins/MyPluginDirectory/my_big_database.db
+        files-to-sync-in-real-time:
+        - plugins/MyPluginDirectory/userdata
+        files-to-sync-on-startup:
+        - paper-global.yml
+        
+        log-file-syncs: true
+      persistent-player-entity-ids: true
+      persistent-vehicle-entity-ids-seconds: 15
+      sync-entity-ids: true
+      sync-json-files: true
+      sync-permissions: false
+      sync-scoreboards: true
+      use-local-player-count-for-server-is-full-kick: false
   paper-global.yml: |
     _version: 28
     block-updates:
@@ -81,13 +115,13 @@ data:
       rate: -1
     proxies:
       bungee-cord:
-        enabled: false
-        online-mode: false 
-      proxy-protocol: false
+        enabled: true   
+        online-mode: true    
+      proxy-protocol: false 
       velocity:
-        enabled: true 
-        online-mode: false
-        secret: 'w5A76DwhYVb2cTTLLkH4Pqmanr7xNjmb'
+        enabled: false 
+        online-mode: false  
+        secret: "w5A76DwhYVb2cTTLLkH4Pqmanr7xNjmb" 
     scoreboards:
       save-empty-scoreboard-teams: false
       track-plugin-scoreboards: false
@@ -128,8 +162,8 @@ data:
       timeout-time: 60
       restart-on-crash: true
       restart-script: ./start.sh
-      bungeecord: true 
-      velocity: false 
+      bungeecord: true        
+       
       player-shuffle: 0
       user-cache-size: 1000
       moved-wrongly-threshold: 0.0625
@@ -287,6 +321,66 @@ data:
     stats:
       disable-saving: false
       forced-stats: {}
+
+  server.properties: |
+    allow-flight=true 
+    allow-nether=true
+    broadcast-console-to-ops=true
+    broadcast-rcon-to-ops=true
+    debug=false
+    difficulty=normal 
+    enable-command-block=false
+    enable-jmx-monitoring=false
+    enable-query=false
+    enable-rcon=false
+    enable-status=true
+    enforce-secure-profile=true
+    enforce-whitelist=false
+    entity-broadcast-range-percentage=100
+    force-gamemode=false
+    function-permission-level=2
+    gamemode=survival
+    generate-structures=true
+    generator-settings={}
+    hardcore=false
+    hide-online-players=false
+    initial-disabled-packs=
+    initial-enabled-packs=vanilla
+    level-name=world
+    level-seed=
+    level-type=minecraft\:normal
+    max-chained-neighbor-updates=1000000
+    max-players=30
+    max-tick-time=60000
+    max-world-size=5000 
+    motd=A Minecraft Server
+    network-compression-threshold=256
+    online-mode=false  
+    op-permission-level=4
+    player-idle-timeout=0
+    prevent-proxy-connections=false
+    pvp=true
+    query.port=25565
+    rate-limit=0
+    rcon.password=petuk1k1711666
+    rcon.port=25575
+    require-resource-pack=false
+    resource-pack=
+    resource-pack-prompt=
+    resource-pack-sha1=
+    server-ip=
+    server-name=Unknown Server
+    server-port=25565
+    simulation-distance=10
+    spawn-animals=true
+    spawn-monsters=true
+    spawn-npcs=true
+    spawn-protection=16
+    sync-chunk-writes=true
+    text-filtering-config=
+    use-native-transport=true
+    view-distance=16
+    white-list=false
 
 
 

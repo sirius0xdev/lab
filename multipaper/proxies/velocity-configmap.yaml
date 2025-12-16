@@ -19,7 +19,7 @@ data:
 
     prevent-client-proxy-connections = false
 
-    player-info-forwarding-mode = modern  
+    player-info-forwarding-mode = "legacy"   
 
     forwarding-secret = "w5A76DwhYVb2cTTLLkH4Pqmanr7xNjmb"
 

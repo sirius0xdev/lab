@@ -4,7 +4,7 @@ metadata:
   name: multipaper-server-deployment
   namespace: minecraft
 spec:
-  replicas: 1 # Scale this out as needed
+  replicas: 1  # Scale this out as needed
   selector:
     matchLabels:
       app: multipaper-server
@@ -38,7 +38,9 @@ spec:
       - name: download-plugins
         image: curlimages/curl:latest # A minimal image with curl pre-installed
         command: ['sh', '-c', '
-          curl -L "https://github.com/ViaVersion/ViaVersion/releases/download/5.5.1/ViaVersion-5.5.1.jar" -o /plugins/Viaversion.jar 
+          curl -L "https://github.com/ViaVersion/ViaVersion/releases/download/5.5.1/ViaVersion-5.5.1.jar" -o /plugins/Viaversion.jar && 
+          curl -L "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot" -o /plugins/floodgate.jar &&
+          curl -L "https://github.com/CritterzNFT/Essentials/releases/download/b150542/EssentialsX-2.20.0-dev+11-b150542.jar" -o /plugins/essentials.jar 
           ']
         volumeMounts:
           - name: plugins-storage
@@ -47,6 +49,13 @@ spec:
       containers:
       - name: server
         image: noevidenz/multipaper:1.20
+        
+        resources:
+          limits:
+            memory: 8Gi 
+          requests:
+            memory: 4Gi 
+        
         env:
         - name: EULA
           value: "true"

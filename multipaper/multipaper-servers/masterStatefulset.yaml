@@ -21,7 +21,7 @@ spec:
           resources:
             limits:
               memory: 2048Mi
-              cpu: 500m
+              
             requests:
               memory: 1024Mi 
               cpu: 250m 
@@ -48,7 +48,7 @@ spec:
         accessModes: [ "ReadWriteOnce" ]
         resources:
           requests:
-            storage: 20Gi
+            storage: 60Gi
                     
 
 
