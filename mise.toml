@@ -1,5 +1,2 @@
 [tools]
-age = "latest"
-helm = "latest"
 kubectl = "latest"
-sops = "latest"
