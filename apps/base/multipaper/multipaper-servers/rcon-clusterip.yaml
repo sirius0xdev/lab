@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rcon-service
+  namespace: minecraft 
+spec:
+  type: ClusterIP 
+  selector:
+    app: multipaper-server 
+  ports:
+    - protocol: TCP
+      port: 25575 # Port for inter-server communication
+      targetPort: 25575
