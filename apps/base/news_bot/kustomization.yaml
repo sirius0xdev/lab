@@ -5,7 +5,7 @@ namespace: newsbot
 resources:
   - configmap.yaml
   - geminiapi.yaml 
-  - news-user-db-secret.yaml
+  - news-db-secret.yaml
   - analyst-gemini-cronjob.yaml
   - scraper-cronjob.yaml
   - scrapy-urls-configmap.yaml

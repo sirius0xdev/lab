@@ -10,7 +10,7 @@ spec:
         ensure: present
         login: true
         passwordSecret:
-          name: new-user-db-secret  
+          name: news-db-secret  
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:15.2
   storage:
@@ -20,7 +20,7 @@ spec:
       database: news_app_db
       owner: news_app 
       secret:
-        name: new-user-db-secret 
+        name: news-db-secret 
 
 
 
