@@ -19,7 +19,7 @@ spec:
                 - name: DB_PASSWORD
                   valueFrom:
                     secretKeyRef:
-                      name: news-user-password
+                      name: new-user-db-secret 
                       key: password 
               envFrom:
                 - configMapRef:
