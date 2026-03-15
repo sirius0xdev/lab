@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+    GEMINI_API_KEY: ENC[AES256_GCM,data:ofsi2po3g3dpnHAmkUW0qj54QX5Hemqe0hLaAR/9VXVj5iZ8Y5PuYS8qC7HBCMm6PsNkw0G7LK+SxDwuG8gQmccrxpIo3MoL,iv:xqx/MpPhKugtRoYd4iwuxfDVo25t6eAJ5psOnfYCv1U=,tag:p3KrmY9ySdWCdkjRyb3cLA==,type:str]
+kind: Secret
+metadata:
+    name: gemini-apikey
+    namespace: newsbot
+sops:
+    age:
+        - recipient: age1fu3yw8700dznl0xgsrcgghjase8uh94unaj4pjjkh70g7kzv8u3sqcgz4d
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpd2VwT0N2VVpBUGFLZFQ1
+            R2NwQ0xKY2RJVlBUZWdTcnNRZnFRK0NyWURBCjJPNUV3VWh1c0JJSkNRZnVZOHc4
+            Tm5ZN3lzNkkxVFBIVTdnclhQbCs2dmsKLS0tIGlrT0FwYVJyM3ppWVhsM1lINUps
+            MlVGTHRFYjBLNTYrSDJXQjlzbTJnQncKzwhNB8Nrdw0TtPIoWLvD5LLESBbI97Fb
+            CvJcaPlovMCvwoxIoz1j5RlRt/xqe+MJRdxe9gxSwyzwxLrSQvG3YA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-03-15T18:36:29Z"
+    mac: ENC[AES256_GCM,data:qR3BaJJLJ7nUTu8GUMMDfJUYQCQ706fGjoxl2hK+QS6GPuF26ZgIIPUcSl1CHJZw5JLJJl3y204jigFxMyp9s9Fs1d/Bvqa/VCKCP/kVJsQ3npLJNl6pRhuomF9n3hbC12EICtvlt2B3RVaAYym0YYHxbTFnEXQougU0ss96vfE=,iv:73hgCsGcL6jl3ZlbVe9XFenyVhzE1j8Ei+uvrtj77V8=,tag:8Ev40SYUEOFFapmt5zq4lw==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.1
