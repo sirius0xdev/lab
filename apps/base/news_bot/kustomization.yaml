@@ -15,4 +15,4 @@ resources:
   # - gemma-configmap.yaml
   # - analyst-cronjob.yaml
  # - ollama-storage.yaml
-
+  - namespace.yaml
