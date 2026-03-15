@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: newsbot
 resources:
   - configmap.yaml
-  - gemini-apikey.yaml 
+  - geminiapi.yaml 
   - news-user-db-secret.yaml
   - analyst-gemini-cronjob.yaml
   - scraper-cronjob.yaml
