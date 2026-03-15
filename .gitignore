@@ -5,4 +5,8 @@ secrets
 ./infra/networking/certManager/issuer.yaml
 clean-gemini-apikey.yaml
 clean-telebot-secret.yaml
+<<<<<<< HEAD
 gcloud.age 
+=======
+gcloud.age
+>>>>>>> main

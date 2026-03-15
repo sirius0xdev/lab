@@ -1,4 +1,0 @@
-[tools]
-gcloud = "latest"
-kubectl = "latest"
-sops = "latest"

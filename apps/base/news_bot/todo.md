@@ -1,0 +1,54 @@
+remake secrets with namespace & encrypt 
+  telebot-secret
+  gemini-api
+  news-user-db-secret 
+
+
+
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: customer1-pgdb
+  namespace: customer1
+  
+spec:
+  managed:
+    roles:
+      - name: customer1
+        ensure: present
+        login: true
+        passwordSecret:
+          name: customer1-db-credentials
+      - name: news_app
+        ensure: present
+        login: true 
+        passwordSecret:
+          name: news-user-password
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.2
+  storage:
+    size: 5Gi
+  bootstrap:
+    initdb:
+      database: n8n 
+      owner: customer1   
+      secret:
+        name: customer1-db-credentials 
+  serviceAccountTemplate:
+    metadata:
+      annotations:
+        iam.gke.io/gcp-service-account: cnpg-backup-sa@devops-lab-cluster.iam.gserviceaccount.com
+
+  backup:
+    barmanObjectStore:
+      destinationPath: "gs://customer1_db_backup/customer1-backups/"
+      googleCredentials:
+        gkeEnvironment: true
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+        jobs: 2
+    retentionPolicy: "30d"
+    target: primary
+
