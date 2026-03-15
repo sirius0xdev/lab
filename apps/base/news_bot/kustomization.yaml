@@ -11,7 +11,7 @@ resources:
   - scrapy-urls-configmap.yaml
   - scrapy-configmap.yaml
   - telebot-cronjob.yaml
-  - telebot-secret.yaml 
+  - telebot-token.yaml 
   # - gemma-configmap.yaml
   # - analyst-cronjob.yaml
  # - ollama-storage.yaml
