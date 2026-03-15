@@ -6,11 +6,11 @@ metadata:
 spec:
   managed:
     roles:
-      name: news_app
-      ensure: present
-      login: true
-      passwordSecret:
-        name: news-user-password 
+      - name: news_app
+        ensure: present
+        login: true
+        passwordSecret:
+          name: news-user-db-secret  
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:15.2
   storage:
@@ -20,7 +20,12 @@ spec:
       database: news_app_db
       owner: news_app 
       secret:
-        news-user-password 
+        name: new-user-db-secret 
+
+
+
+
+
 
 
 
