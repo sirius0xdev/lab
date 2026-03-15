@@ -2,4 +2,7 @@ kubeconfig
 age.agekey
 secrets
 ./infra/networking/certManager/cloudapi.yaml 
-./infra/networking/certManager/issuer.yaml 
+./infra/networking/certManager/issuer.yaml
+clean-gemini-apikey.yaml
+clean-telebot-secret.yaml
+gcloud.age 
