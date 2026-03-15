@@ -13,7 +13,7 @@ spec:
         spec:
           containers:
             - name: analyst-gemini
-              image: siriussec/gemini-news-summarizer:0.1
+              image: siriussec/gemini_news_summarizer:0.1
               
               env:
                 - name: DB_PASSWORD
