@@ -16,3 +16,4 @@ resources:
   # - analyst-cronjob.yaml
  # - ollama-storage.yaml
   - namespace.yaml
+  - newsbot-db.yaml
