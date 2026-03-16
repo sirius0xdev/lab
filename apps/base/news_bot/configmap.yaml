@@ -4,7 +4,7 @@ metadata:
   name: news-app-config
   namespace: newsbot
 data:
-  DB_HOST: "newsbot-db-pgdb-rw"
+  DB_HOST: "newsbot-db-rw"
   DB_NAME: "news_app_db"
   DB_USER: "news_app"
   DB_PORT: "5432"
