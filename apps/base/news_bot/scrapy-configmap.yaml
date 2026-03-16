@@ -5,7 +5,7 @@ metadata:
   namespace: newsbot 
 data:
   # Database Connection
-  DB_HOST: "newsbot-db-1"
+  DB_HOST: "newsbot-db-rw"
 
   DB_NAME: "news_app_db"
   DB_USER: "news_app"
